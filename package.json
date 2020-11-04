@@ -6,7 +6,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "cp src/client/index.html dist/ && cp -r src/client/data dist/  && cp -r src/client/css dist/ && npm run start & npx babel --watch src/client --out-dir dist/js",
+    "prebuild": "rimraf dist/*",
+    "copy:html": "cp src/client/index.html dist/",
+    "copy:styles": "cp -r src/client/css dist/",
+    "copy:data": "cp -r src/client/data dist/",
+    "copy:assets": "npm run copy:html && npm run copy:styles && npm run copy:data",
+    "dev": "npm run prebuild && npm run copy:assets && npm run start & npx babel --watch src/client --out-dir dist/js",
     "deploy": "gh-pages -d dist"
   },
   "author": "",
@@ -17,6 +22,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "rimraf": "^3.0.2"
   }
 }

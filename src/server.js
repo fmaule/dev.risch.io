@@ -5,6 +5,3 @@ const app = express()
 
 app.use('/', express.static(path.join(__dirname, '../dist')))
 app.listen(3000, () => console.log(`Server listening on 3000`));
-
-
-
