@@ -1,0 +1,17 @@
+{
+  "name": "risch.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "cp src/client/index.html dist/ && cp -r src/client/data dist/ && npm run start & npx babel --watch src/client --out-dir dist/ --presets react-app/prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "express": "^4.17.1"
+  }
+}
