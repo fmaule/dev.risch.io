@@ -1,9 +1,71 @@
 html, body {
   height: 100%;
-  padding: 0;
-  margin: 0;
+  padding: 10px;
+  margin: 10px;
+  font-family: 'Roboto', sans-serif;
+  background: #E8EBF3;
 }
+
 #map {
   width: 600px;
   height: 700px;
+}
+
+.boxold {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.risk__high {
+  background: #ff4239;
+}
+
+.risk__medium {
+  background: #ffa420;
+}
+
+.risk__low {
+  background: #ffe08e;
+}
+
+.boxold__title {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.boxold__text {
+  font-size: 1em;
+}
+
+.fa-stack { 
+  font-size: 0.5em; 
+}
+
+
+.box {
+  box-shadow: 0 10px 30px rgba(#414856, 0.05);
+  margin-bottom: 10px;
+}
+
+.box__title {
+  display: block;
+  padding: 10px;
+  height: 40px;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+  color:black;
+}
+
+.box__content {
+  overflow: hidden;
+  padding: 5px;
+  font-size: 15px;
+  background: white;
+  color: black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }

@@ -1,17 +1,166 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://kit.fontawesome.com/df0d6034c7.js" crossorigin="anonymous"></script>
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-    <script src="https://unpkg.com/leaflet.snogylop@0.4.0/src/leaflet.snogylop.js"></script>
     <script src="js/map.js"></script>
     <script src="js/covidrisk.js"></script>
+    <title>risch.io | Restrizioni COVID-19 in Italia, comprensibili da un umano</title>
   </head>
+
   <body>
-  <div id="map"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col" id="map"></div>
+        <div class="col-6 col-sm-4">
+          <div class="box">
+            <div class="box__title risk__low">Restrizioni nazionali</div>
+            <div class="box__content">
+              <ul>
+                <li>        
+                  <i class="fas fa-car-side"></i>
+                  Consentita la mobilità fino alle 22
+                </li>
+                 <li>        
+                  <i class="fas fa-store"></i>
+                  <i class="fas fa-spa"></i>
+                  <i class="fas fa-cut"></i>
+                  Aperti negozi, centri estetici, parrucchieri
+                </li>
+                <li>        
+                  <i class="fas fa-utensils"></i>
+                  <i class="fas fa-coffee"></i>
+                  <i class="fas fa-birthday-cake"></i>
+                  Ristoranti, bar, pasticcerie chiudono alle 18. Consentito il pranzo di domenica.
+                </li>
+                <li>
+                  <i class="fas fa-pizza-slice"></i>
+                  Nessuna limitazione consegne a domicilio
+                </li>
+                <li>        
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  Aperte le scuole fino alla terza media compresa
+                </li>
+              <ul>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box__title risk__medium">Elevata gravità</div>
+            <div class="box__content">
+              <ul>
+                <li>        
+                  <span class="fa-stack">
+                    <i class="fas fa-car-side fa-stack-1x"></i>
+                    <i class="fas fa-circle-notch fa-stack-2x"></i>
+                  </span>
+                  Consentita la mobilità nel proprio comune entro le 22
+                </li>
+                <li>        
+                  <i class="fas fa-store"></i>
+                  <i class="fas fa-spa"></i>
+                  <i class="fas fa-cut"></i>
+                  Aperti negozi, centri estetici, parrucchieri
+                </li>
+                <li>
+                  <span class="fa-stack">
+                    <i class="fas fa-utensils fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x"></i>
+                  </span>
+                  <span class="fa-stack">
+                    <i class="fas fa-coffee fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x"></i>
+                  </span>
+                  <span class="fa-stack">
+                    <i class="fas fa-birthday-cake fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x"></i>
+                  </span>
+                  Chiusi ristoranti, bar, pasticcerie.
+                </li>
+                <li>
+                  <i class="fas fa-pizza-slice"></i>
+                  Nessuna limitazione consegne a domicilio, asporto fino alle 22
+                </li>
+                <li>        
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  Aperte le scuole fino alla terza media compresa
+                </li>
+                <li>        
+                  <span class="fa-stack">
+                    <i class="fas fa-gift fa-stack-1x"></i>
+                    <i class="fas fa-circle-notch fa-stack-2x"></i>
+                  </span>
+                  Aperti i centri commerciali, chiusi nel fine settimana
+                </li>
+              <ul>
+            </div>
+          </div>
+
+          <div class="box">
+            <div class="box__title risk__high">Massima gravità</div>
+            <div class="box__content">
+              <ul>
+                <li>        
+                  <span class="fa-stack">
+                    <i class="fas fa-car fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x"></i>
+                  </span>
+                  Vietata la mobilità
+                </li>
+                <li>        
+                  <i class="fas fa-cut"></i>
+                  Aperti parrucchieri e barbieri
+                </li>
+                <li>
+                  <span class="fa-stack">
+                    <i class="fas fa-spa fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x"></i>
+                  </span>
+                  Chiusi estetisti
+                </li>
+                <li>        
+                  <i class="fas fa-industry"></i>
+                  Aperte le industrie
+                </li>
+                <li>        
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  Aperte le scuole fino alla prima media compresa
+                </li>
+                <li>
+                  <i class="fas fa-pizza-slice"></i>
+                  Nessuna limitazione consegne a domicilio, asporto fino alle 22
+                </li>
+                <li>
+                  <span class="fa-stack">
+                    <i class="fas fa-gift fa-stack-1x"></i>
+                    <i class="fas fa-ban fa-stack-2x"></i>
+                  </span>
+                  <span class="fa-stack">
+                    <i class="fas fa-spa fa-stack-1x"></i>
+                    <i class="fas fa-film fa-stack-2x"></i>
+                  </span>
+                  <span class="fa-stack">
+                    <i class="fas fa-spa fa-stack-1x"></i>
+                    <i class="fas fa-theater-masks fa-stack-2x"></i>
+                  </span>
+                  <i class="fas fa-prescription-bottle-alt"></i>
+
+                  Chiusi centri commerciali, cinema, teatri e tutti i negozi a parte beni di necessità
+                </li>
+              <ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="h6 footer text-center font-weight-light">Handcrafted with ❤️ and ☕️ by
+        <a href="https://github.com/fmaule">Fernando Maule</a>
+      </div>
+    </div>
   </body>
 </html>
