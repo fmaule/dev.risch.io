@@ -9,12 +9,12 @@ L.TileLayer.Grayscale = L.TileLayer.extend({
 		quotaGreen: 71,
 		quotaBlue: 8,
 		quotaDividerTune: 0,
-		quotaDivider: function quotaDivider() {
+		quotaDivider: function () {
 			return this.quotaRed + this.quotaGreen + this.quotaBlue + this.quotaDividerTune;
 		}
 	},
 
-	initialize: function initialize(url, options) {
+	initialize: function (url, options) {
 		options = options || {};
 		options.crossOrigin = true;
 		L.TileLayer.prototype.initialize.call(this, url, options);
@@ -24,13 +24,13 @@ L.TileLayer.Grayscale = L.TileLayer.extend({
 		});
 	},
 
-	_createTile: function _createTile() {
+	_createTile: function () {
 		var tile = L.TileLayer.prototype._createTile.call(this);
 		tile.crossOrigin = "Anonymous";
 		return tile;
 	},
 
-	_makeGrayscale: function _makeGrayscale(img) {
+	_makeGrayscale: function (img) {
 		if (img.getAttribute('data-grayscaled')) return;
 
 		img.crossOrigin = '';
@@ -61,7 +61,7 @@ L.tileLayer.grayscale = function (url, options) {
  */
 
 L.TopoJSON = L.GeoJSON.extend({
-	addData: function addData(jsonData) {
+	addData: function (jsonData) {
 		if (jsonData.type === "Topology") {
 			for (key in jsonData.objects) {
 				geojson = topojson.feature(jsonData, jsonData.objects[key]);
@@ -88,7 +88,7 @@ L.Mask = L.Polygon.extend({
 		outerBounds: new L.LatLngBounds([-90, -360], [90, 360])
 	},
 
-	initialize: function initialize(latLngs, options) {
+	initialize: function (latLngs, options) {
 
 		var outerBoundsLatLngs = [this.options.outerBounds.getSouthWest(), this.options.outerBounds.getNorthWest(), this.options.outerBounds.getNorthEast(), this.options.outerBounds.getSouthEast()];
 		L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);
