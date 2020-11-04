@@ -1,14 +1,13 @@
 html, body {
   height: 100%;
-  padding: 10px;
-  margin: 10px;
   font-family: 'Roboto', sans-serif;
   background: #E8EBF3;
 }
 
 #map {
-  width: 600px;
-  height: 700px;
+  margin-top: 15px;
+  width: 50%;
+  height: 660px;
 }
 
 .boxold {
@@ -46,7 +45,8 @@ html, body {
 
 .box {
   box-shadow: 0 10px 30px rgba(#414856, 0.05);
-  margin-bottom: 10px;
+  margin-top: 35px;
+  margin-bottom: 25px;
 }
 
 .box__title {
