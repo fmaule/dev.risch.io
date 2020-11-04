@@ -11,38 +11,46 @@ const initMap = () => {
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
   }).addTo(map);
 
-  const covidRisk = [
-    { istatId: 1, risk: 2 },
-    { istatId: 2, risk: 2 },
-    { istatId: 3, risk: 2 },
-    { istatId: 4, risk: 2 },
-    { istatId: 5, risk: 1 },
-    { istatId: 6, risk: 0 },
-    { istatId: 7, risk: 1 },
-    { istatId: 8, risk: 0 },
-    { istatId: 9, risk: 0 },
-    { istatId: 10, risk: 0 },
-    { istatId: 11, risk: 0 },
-    { istatId: 12, risk: 0 },
-    { istatId: 13, risk: 0 },
-    { istatId: 14, risk: 0 },
-    { istatId: 15, risk: 1 },
-    { istatId: 16, risk: 1 },
-    { istatId: 17, risk: 0 },
-    { istatId: 18, risk: 2 },
-    { istatId: 19, risk: 0 },
-    { istatId: 20, risk: 0 },
+  const regionCovidRisk = [
+    { istatId: 1, risk: 'high' },
+    { istatId: 2, risk: 'high' },
+    { istatId: 3, risk: 'high' },
+    { istatId: 4, risk: 'high' },
+    { istatId: 5, risk: 'medium' },
+    { istatId: 6, risk: 'low' },
+    { istatId: 7, risk: 'medium' },
+    { istatId: 8, risk: 'low' },
+    { istatId: 9, risk: 'low' },
+    { istatId: 10, risk: 'low' },
+    { istatId: 11, risk: 'low' },
+    { istatId: 12, risk: 'low' },
+    { istatId: 13, risk: 'low' },
+    { istatId: 14, risk: 'low' },
+    { istatId: 15, risk: 'medium' },
+    { istatId: 16, risk: 'medium' },
+    { istatId: 17, risk: 'low' },
+    { istatId: 18, risk: 'high' },
+    { istatId: 19, risk: 'low' },
+    { istatId: 20, risk: 'low' },
   ]
 
-  const riskToColor = (istatId) => {
+  const provinceCovidRisk = [
+    { istatId: 21, risk: 'high' },
+    { istatId: 22, risk: 'low' },
+  ]
+
+  const riskToColor = ({ regionIstatCode, provinceIstatCode }) => {
+
     // palette https://colorhunt.co/palette/212737
     const riskColorMap = {
-      0: '#9ad3bc',
-      1: '#f5b461',
-      2: '#ec524b',
+      low: '#ffe08e',
+      medium: '#ffa420',
+      high: '#ff4239',
     }
-    const riskLevel = covidRisk.find(zone => zone.istatId === istatId).risk || 0;
-    return riskColorMap[riskLevel];
+
+    const provinceRiskLevel = (provinceCovidRisk.find(zone => zone.istatId === provinceIstatCode) || {}).risk;
+    const regionRiskLevel = (regionCovidRisk.find(zone => zone.istatId === regionIstatCode) || {}).risk;
+    return riskColorMap[provinceRiskLevel || regionRiskLevel];
   }
 
   const addTopoData = (topoData) => {
@@ -52,9 +60,13 @@ const initMap = () => {
   }
 
   const handleLayer = (layer) => {  
-    const { reg_istat_code_num: regIstatCodeNum } = layer.feature.properties;
-    
-    const fillColor = riskToColor(regIstatCodeNum);
+    console.log('layer', layer);
+    const { 
+      reg_istat_code_num: regionIstatCode,
+      prov_istat_code_num: provinceIstatCode
+    } = layer.feature.properties;
+
+    const fillColor = riskToColor({ regionIstatCode, provinceIstatCode });
     
     if (fillColor) {
       return layer.setStyle({
@@ -101,7 +113,7 @@ const initMap = () => {
   // const maskCoords = italyBox.map((coord) => new L.LatLng(coord[0][0], coord[0][1]));
   // L.mask(maskCoords).addTo(map);
 
-  fetch('data/limits_IT_regions.topo.json')
+  fetch('data/limits_IT_provinces.topo.json')
     .then(response => response.json())
     .then(data => {
       console.log({data})

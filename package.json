@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
-    "prebuild": "rimraf dist/*",
+    "prebuild": "rimraf dist/* && sleep 1",
     "copy:html": "cp src/client/index.html dist/",
     "copy:styles": "cp -r src/client/css dist/",
     "copy:data": "cp -r src/client/data dist/",
