@@ -42,7 +42,6 @@ const initMap = () => {
       prov_istat_code_num: provinceIstatCode
     } = layer.feature.properties;
 
-    console.log({ regionIstatCode, provinceIstatCode });
     const fillColor = riskToColor({ regionIstatCode, provinceIstatCode });
 
     if (fillColor) {
