@@ -62,7 +62,7 @@ var maskCoords = italyBox.map(function (coord) {
 });
 L.mask(maskCoords).addTo(map);
 
-fetch('data/limits_IT_regions.topo.json').then(function (response) {
+fetch('dev.risch.io/data/limits_IT_regions.topo.json').then(function (response) {
   return response.json();
 }).then(function (data) {
   console.log({ data: data });
